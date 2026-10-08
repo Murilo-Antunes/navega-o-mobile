@@ -1,12 +1,10 @@
-package com.example.navagecao.screens
+package com.aulasandroid.navegacaofluxotelas.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,30 +17,36 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun PerfilScreen(navController: NavController, nome: String){
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color(0XFF329F6B))
-        .padding(32.dp)
+fun PerfilScreen(modifier: Modifier, navController: NavController, nome: String, idade: Int) {
+    Column(
+        modifier = modifier
+            .background(Color(65, 137, 72, 255))
+            .fillMaxSize()
+            .padding(horizontal = 80.dp, vertical = 20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "PERFIL - $nome",
-            fontSize = 24.sp,
+            text = "PERFIL - $nome - $idade",
+            color = Color.White,
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.White
+            modifier = Modifier
+                .align(Alignment.Start)
         )
 
-        Button(
-            onClick = {navController.navigate("menu")},
-            colors = ButtonDefaults.buttonColors(Color.White),
-            modifier = Modifier.align(Alignment.Center).size(width = 200.dp, height = 48.dp)
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = "VOLTAR",
-                fontSize = 20.sp,
-                color = Color.Blue
+            ButtonCompose(
+                containerColor = Color.White,
+                contentColor = Color.Blue,
+                text = "Voltar",
+                onClick = {
+                    navController.navigate(route = "menu")
+                }
             )
         }
-
     }
 }

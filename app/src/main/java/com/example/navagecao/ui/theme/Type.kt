@@ -1,4 +1,4 @@
-package com.example.navagecao.ui.theme
+package com.aulasandroid.navegacaofluxotelas.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

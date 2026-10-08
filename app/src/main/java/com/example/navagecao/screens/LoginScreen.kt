@@ -1,8 +1,11 @@
-package com.example.navagecao.screens
+package com.aulasandroid.navegacaofluxotelas.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
@@ -19,30 +22,54 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun LoginScreen(navController: NavController){
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color(0xFFCE0432))
-        .padding(32.dp)
+fun LoginScreen(modifier: Modifier, navController: NavController) {
+    Column(
+        modifier = modifier
+            .background(Color(184, 60, 60, 255))
+            .fillMaxSize()
+            .padding(horizontal = 80.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "login",
-            fontSize = 24.sp,
+            text = "LOGIN",
+            color = Color.White,
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.White
+            modifier = Modifier
+                .padding(vertical = 20.dp)
+                .align(Alignment.Start)
         )
 
-        Button(
-            onClick = {navController.navigate("menu")},
-            colors = ButtonDefaults.buttonColors(Color.White),
-            modifier = Modifier.align(Alignment.Center).size(width = 200.dp, height = 48.dp)
-        ) {
-            Text(
-                text = "ENTRAR",
-                fontSize = 20.sp,
-                color = Color.Blue
-            )
-        }
+        Spacer(modifier = Modifier.size(80.dp))
 
+        ButtonCompose(
+            containerColor = Color.White,
+            contentColor = Color.Blue,
+            text = "ENTRAR",
+            onClick = {
+                navController.navigate(route = "menu")
+            }
+        )
+    }
+}
+
+@Composable
+fun ButtonCompose (containerColor: Color, contentColor: Color, text: String, onClick: Function0<Unit>) {
+    Button(
+        modifier = Modifier
+            .height(50.dp)
+            .fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = containerColor,
+            contentColor = contentColor
+        ),
+        onClick = onClick
+    ) {
+        Text(
+            text = text,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+        )
     }
 }

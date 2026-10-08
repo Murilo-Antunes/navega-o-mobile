@@ -1,15 +1,12 @@
-package com.example.navagecao.screens
+package com.aulasandroid.navegacaofluxotelas.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,59 +19,56 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun MenuScreen(navController: NavController){
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color(0xFF2C4EC7))
-        .padding(32.dp)
+fun MenuScreen(modifier: Modifier, navController: NavController) {
+    Column(
+        modifier = modifier
+            .background(Color(19, 36, 144, 255))
+            .fillMaxSize()
+            .padding(horizontal = 80.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "MENU",
-            fontSize = 24.sp,
+            color = Color.White,
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.White
+            modifier = Modifier
+                .padding(vertical = 20.dp)
+                .align(Alignment.Start)
         )
 
-        Column(
-            modifier = Modifier.fillMaxWidth().align(Alignment.Center),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Button(
-                onClick = {navController.navigate("perfil/Maria")},
-                colors = ButtonDefaults.buttonColors(Color.White),
-                modifier = Modifier.size(width = 200.dp, height = 48.dp)
-            ) {
-                Text(
-                    text = "Perfil",
-                    fontSize = 20.sp,
-                    color = Color.Blue
-                )
-            }
+        Spacer(modifier = Modifier.size(80.dp))
 
-            Button(
-                onClick = {navController.navigate("pedidos")},
-                colors = ButtonDefaults.buttonColors(Color.White),
-                modifier = Modifier.size(width = 200.dp, height = 48.dp)
-            ) {
-                Text(
-                    text = "Pedidos",
-                    fontSize = 20.sp,
-                    color = Color.Blue
-                )
+        ButtonCompose(
+            containerColor = Color.White,
+            contentColor = Color.Blue,
+            text = "Perfil",
+            onClick = {
+                navController.navigate(route = "perfil/Maria/20")
             }
+        )
 
-            Button(
-                onClick = {navController.navigate("login")},
-                colors = ButtonDefaults.buttonColors(Color.White),
-                modifier = Modifier.size(width = 200.dp, height = 48.dp)
-            ) {
-                Text(
-                    text = "Sair",
-                    fontSize = 20.sp,
-                    color = Color.Blue
-                )
+        Spacer(modifier = Modifier.size(250.dp))
+
+        ButtonCompose(
+            containerColor = Color.White,
+            contentColor = Color.Blue,
+            text = "Pedidos",
+            onClick = {
+                navController.navigate(route = "pedidos")
             }
-        }
+        )
+
+        Spacer(modifier = Modifier.size(20.dp))
+
+        ButtonCompose(
+            containerColor = Color.White,
+            contentColor = Color.Blue,
+            text = "Sair",
+            onClick = {
+                navController.navigate(route = "login")
+            }
+        )
+
     }
 }
